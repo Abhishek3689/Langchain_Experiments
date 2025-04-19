@@ -12,3 +12,4 @@ langchain-huggingface
 transformers
 huggingface-hub
 sentencepiece
+torch

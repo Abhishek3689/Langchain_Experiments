@@ -3,8 +3,10 @@ from dotenv import load_dotenv
 import os
 import getpass
 from langchain_huggingface import HuggingFaceEndpoint,ChatHuggingFace
-
-
+from langchain.prompts import PromptTemplate
+from langchain.chains import LLMChain
+#import torch
+from src.utils import save_model
 
 # Load the .env file
 load_dotenv()
@@ -20,5 +22,4 @@ model = ChatHuggingFace(
     llm=llm
 )
 
-response = model.invoke("How many states are there in USA?Give me numbers only")
-print(response.content)
+save_model(model,"artifacts/model.pth")

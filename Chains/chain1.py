@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain_huggingface import ChatHuggingFace,HuggingFaceEndpoint
+from src.utils import save_model
 
 load_dotenv()
 llm=HuggingFaceEndpoint(
@@ -20,5 +21,5 @@ while True:
     if user_input=='quit':
         break
     chain=LLMChain(llm=model,prompt=prompt)
-    response=chain.invoke(input={'player':user_input})
+    response=chain.run(input={'player':user_input})
     print(response)
